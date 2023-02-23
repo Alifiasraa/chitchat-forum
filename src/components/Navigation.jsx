@@ -10,7 +10,7 @@ function Navigation() {
       </span>
       <div className=" border border-slate-600 rounded-3xl p-2 mx-8 w-1/2 inline justify-center relative">
         <input
-          className="w-2/3 pl-2 focus:outline-none bg-transparent"
+          className="w-full pl-2 focus:outline-none bg-transparent"
           placeholder="Type anything here..."
         />
         <div className="border rounded-full w-8 h-8 bg-[#ff8ba7]  absolute right-2 top-1 py-[2px] px-[4px] flex">

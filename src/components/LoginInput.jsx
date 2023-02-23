@@ -1,10 +1,11 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import useInput from '../hooks/useInput';
 
-function LoginInput() {
+function LoginInput({ login }) {
   const [email, setEmail] = useInput('');
   const [password, setPassword] = useInput('');
 
@@ -38,13 +39,14 @@ function LoginInput() {
           placeholder="Password"
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           value={password}
-          onChange={(event) => setPassword(event.target.value)}
+          onChange={setPassword}
         />
       </div>
       <div className="flex items-center justify-between w-full mx-auto">
         <button
           type="submit"
           className="bg-[#fef6e4] text-[#001858] hover:bg-[#ff8ba7] w-1/3 font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          onClick={() => login({ email, password })}
         >
           Login
         </button>

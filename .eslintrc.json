@@ -21,6 +21,7 @@
         "linebreak-style": "off",
         "react/react-in-jsx-scope": "off",
         "no-underscore-dangle": "off",
-        "import/no-extraneous-dependencies": "off"
+        "import/no-extraneous-dependencies": "off",
+        "no-alert": "off"
     }
 }
