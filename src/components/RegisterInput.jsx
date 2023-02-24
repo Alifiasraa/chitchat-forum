@@ -1,28 +1,30 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import useInput from '../hooks/useInput';
+import { asyncRegisterUser } from '../states/users/action';
 
 function RegisterInput() {
   const [name, setName] = useInput('');
   const [email, setEmail] = useInput('');
   const [password, setPassword] = useInput('');
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Lakukan penanganan submit di sini
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const onRegister = () => {
+    dispatch(asyncRegisterUser({ name, email, password }));
+    navigate('/login');
   };
 
   return (
-    <form onSubmit={handleSubmit} className="w-1/2 bg-transparent px-8 pt-6 pb-8 mb-4 flex flex-col justify-center">
+    <form className="w-1/2 bg-transparent px-8 pt-6 pb-8 mb-4 flex flex-col justify-center">
       <div className="mb-4 mx-auto w-full">
         <label htmlFor="email" className="block text-[#001858] font-semibold mb-2">
           Name
         </label>
         <input
           type="text"
-          id="name"
           placeholder="Name"
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           value={name}
@@ -35,7 +37,6 @@ function RegisterInput() {
         </label>
         <input
           type="email"
-          id="email"
           placeholder="Email"
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           value={email}
@@ -48,17 +49,18 @@ function RegisterInput() {
         </label>
         <input
           type="password"
-          id="password"
           placeholder="Password"
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           value={password}
           onChange={setPassword}
         />
       </div>
+
       <div className="flex items-center justify-between w-full mx-auto">
         <button
           type="submit"
           className="bg-[#fef6e4] text-[#001858] hover:bg-[#ff8ba7] w-1/3 font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          onClick={onRegister}
         >
           Register
         </button>

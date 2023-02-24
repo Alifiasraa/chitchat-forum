@@ -1,4 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { BiArrowBack } from 'react-icons/bi';
 import Navigation from '../components/Navigation';
 import ThreadCard from '../components/ThreadCard';
@@ -9,11 +11,13 @@ function Detailpage() {
     <div className="bg-[#fef6e4] min-h-screen">
       <Navigation />
       <div className="w-3/5 mx-auto">
-        <a className="flex items-center ml-3 mt-4">
-          <BiArrowBack size={22} />
-          {' '}
-          <span className="ml-1 font-medium">Kembali</span>
-        </a>
+        <Link to="/">
+          <a className="flex items-center ml-3 mt-4">
+            <BiArrowBack size={22} />
+            {' '}
+            <span className="ml-1 font-medium">Kembali</span>
+          </a>
+        </Link>
         <ThreadCard />
         <CommentInput />
       </div>

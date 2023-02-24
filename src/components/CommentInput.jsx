@@ -1,12 +1,11 @@
 import React from 'react';
-// import { FiSearch } from 'react-icons/fi';
 
 function CommentInput() {
   return (
     <div className="flex gap-1">
       <div className="border border-slate-600 rounded-3xl w-full p-2 ml-3 inline justify-center relative">
         <input
-          className="pl-2 w-3/4 focus:outline-none bg-transparent"
+          className="pl-2 w-full focus:outline-none bg-transparent"
           placeholder="Tambahkan komentar"
         />
       </div>

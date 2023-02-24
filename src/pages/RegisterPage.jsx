@@ -1,3 +1,4 @@
+import React from 'react';
 import RegisterInput from '../components/RegisterInput';
 import chitchat2 from '../images/chitchat2.png';
 
