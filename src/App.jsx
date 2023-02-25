@@ -6,7 +6,8 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import Detailpage from './pages/DetailPage';
 import { asyncPreloadProcess } from './states/isPreload/action';
-// import { asyncUnsetAuthUser } from './states/authUser/action';
+import Navigation from './components/Navigation';
+import Loading from './components/Loading';
 
 function App() {
   const {
@@ -20,34 +21,36 @@ function App() {
     dispatch(asyncPreloadProcess());
   }, [dispatch]);
 
-  // const onLogout = () => {
-  //   dispatch(asyncUnsetAuthUser());
-  // };
-
   if (isPreload) {
     return null;
   }
 
   if (authUser === null) {
     return (
-      <main>
-        <Routes>
-          <Route path="/*" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-        </Routes>
-      </main>
+      <>
+        <Loading />
+        <main>
+          <Routes>
+            <Route path="/*" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+          </Routes>
+        </main>
+      </>
     );
   }
 
   return (
-    <main>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/detail" element={<Detailpage />} />
-      </Routes>
-    </main>
+    <>
+      <header>
+        <Navigation />
+      </header>
+      <main>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/detail" element={<Detailpage />} />
+        </Routes>
+      </main>
+    </>
   );
 }
 

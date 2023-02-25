@@ -1,8 +1,16 @@
 import React from 'react';
 import { FiSearch } from 'react-icons/fi';
+import { useDispatch } from 'react-redux';
 import chitchat from '../images/chitchat.png';
+import { asyncUnsetAuthUser } from '../states/authUser/action';
 
 function Navigation() {
+  const dispatch = useDispatch();
+
+  const onLogout = () => {
+    dispatch(asyncUnsetAuthUser());
+  };
+
   return (
     <div className=" flex justify-center gap-10 py-3">
       <span className="flex items-center">
@@ -20,7 +28,7 @@ function Navigation() {
         </div>
       </div>
 
-      <button type="button" className="border rounded-3xl bg-[#ff8ba7] hover:bg-[#ffc6c7] py-2 px-8 font-semibold">
+      <button type="button" onClick={onLogout} className="border rounded-3xl bg-[#ff8ba7] hover:bg-[#ffc6c7] py-2 px-8 font-semibold">
         Logout
       </button>
     </div>

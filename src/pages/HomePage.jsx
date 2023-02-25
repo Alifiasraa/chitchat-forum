@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Navigation from '../components/Navigation';
 import ThreadList from '../components/ThreadList';
 import SideBar from '../components/SideBar';
 import asyncPopulateUserAndThreads from '../states/shared/action';
@@ -35,7 +34,6 @@ function HomePage() {
 
   return (
     <div className="bg-[#fef6e4] min-h-screen">
-      <Navigation />
       <div className="flex flex-row justify-center my-6">
         <SideBar />
         <ThreadList threads={threadList} upvote={onUpvote} downvote={onDownvote} />

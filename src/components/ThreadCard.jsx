@@ -18,7 +18,7 @@ function ThreadCard({
           </div>
           <div className="flex items-center ml-3">
             <span><AiOutlineClockCircle size={18} /></span>
-            <span className="ml-2 text-gray-500 text-sm">{postedAt(createdAt)}</span>
+            <span className="ml-2 text-black text-sm">{postedAt(createdAt)}</span>
           </div>
         </div>
 
