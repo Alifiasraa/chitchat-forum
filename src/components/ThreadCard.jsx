@@ -2,9 +2,10 @@ import React from 'react';
 import {
   AiOutlineLike, AiOutlineDislike, AiOutlineComment, AiOutlineClockCircle,
 } from 'react-icons/ai';
+import postedAt from '../utils';
 
 function ThreadCard({
-  title, body, category, createdAt, upVotesBy, downVotesBy, totalComments,
+  title, body, category, createdAt, upvote, downvote, totalComments,
 }) {
   return (
     <div className="flex basis-1/2">
@@ -17,7 +18,7 @@ function ThreadCard({
           </div>
           <div className="flex items-center ml-3">
             <span><AiOutlineClockCircle size={18} /></span>
-            <span className="ml-2 text-gray-500 text-sm">{createdAt}</span>
+            <span className="ml-2 text-gray-500 text-sm">{postedAt(createdAt)}</span>
           </div>
         </div>
 
@@ -26,17 +27,17 @@ function ThreadCard({
         </div>
 
         <div className="flex justify-between mt-8">
-          <div className="flex gap-4">
+          <div className="flex gap-2">
             <button type="button">
               <AiOutlineLike size={22} />
             </button>
             {' '}
-            <span>{upVotesBy}</span>
+            <span>{upvote}</span>
 
             <button type="button">
               <AiOutlineDislike size={22} />
             </button>
-            <span>{downVotesBy}</span>
+            <span>{downvote}</span>
 
             <button type="button">
               <AiOutlineComment size={22} />
