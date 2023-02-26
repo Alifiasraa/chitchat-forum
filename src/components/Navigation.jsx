@@ -1,14 +1,17 @@
 import React from 'react';
 import { FiSearch } from 'react-icons/fi';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import chitchat from '../images/chitchat.png';
 import { asyncUnsetAuthUser } from '../states/authUser/action';
 
 function Navigation() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const onLogout = () => {
     dispatch(asyncUnsetAuthUser());
+    navigate('/login');
   };
 
   return (

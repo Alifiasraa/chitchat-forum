@@ -1,15 +1,44 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
 import {
   AiOutlineLike, AiOutlineDislike, AiOutlineComment, AiOutlineClockCircle,
 } from 'react-icons/ai';
+import { useNavigate } from 'react-router-dom';
 import postedAt from '../utils';
 
+// user blm dimasukin kesini
 function ThreadCard({
-  title, body, category, createdAt, upvote, downvote, totalComments,
+  id, title, body, category, createdAt, upVotesBy, downVotesBy, totalComments,
+  upvote, downvote, authUser,
 }) {
+  const navigate = useNavigate();
+  const isThreadUpvoted = upVotesBy.includes(authUser);
+  const isThreadDownvoted = downVotesBy.includes(authUser);
+
+  const onUpvoteClick = (event) => {
+    event.stopPropagation();
+    upvote(id);
+  };
+
+  const onDownvoteClick = (event) => {
+    event.stopPropagation();
+    downvote(id);
+  };
+
+  const onThreadClick = () => {
+    navigate(`/threads/${id}`);
+  };
+
+  const onThreadPress = (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      navigate(`/threads/${id}`);
+    }
+  };
+
   return (
-    <div className="flex basis-1/2">
-      <div className="min-h-fit w-full border-2 rounded-2xl p-6 m-3 shadow-slate-300 bg-[#f3d2c1]">
+    <div className="flex justify-center">
+      <div onClick={onThreadClick} onKeyDown={onThreadPress} className="min-h-fit w-2/3 border-2 rounded-2xl p-6 m-3 shadow-slate-300 bg-[#f3d2c1]">
         <div className="border rounded-md border-slate-600 max-w-fit px-2">{category}</div>
 
         <div className="flex items-center justify-between">
@@ -26,18 +55,37 @@ function ThreadCard({
           {body}
         </div>
 
-        <div className="flex justify-between mt-8">
+        <div className="flex justify-between items-center mt-8">
           <div className="flex gap-2">
-            <button type="button">
+            {
+              upvote && (
+              <>
+                <button type="button" aria-label="upvote" onClick={onUpvoteClick}>
+                  { isThreadUpvoted ? <AiOutlineLike size={22} style={{ color: 'red' }} /> : <AiOutlineLike size={22} /> }
+                </button>
+                <span>{upVotesBy.length}</span>
+              </>
+              )
+            }
+            {
+              downvote && (
+              <>
+                <button type="button" aria-label="downvote" onClick={onDownvoteClick}>
+                  { isThreadDownvoted ? <AiOutlineDislike size={22} style={{ color: 'red' }} /> : <AiOutlineDislike size={22} /> }
+                </button>
+                <span>{downVotesBy.length}</span>
+              </>
+              )
+            }
+            {/* <button type="button">
               <AiOutlineLike size={22} />
             </button>
-            {' '}
-            <span>{upvote}</span>
+            <span>{upvote}</span> */}
 
-            <button type="button">
+            {/* <button type="button">
               <AiOutlineDislike size={22} />
             </button>
-            <span>{downvote}</span>
+            <span>{downvote}</span> */}
 
             <button type="button">
               <AiOutlineComment size={22} />
@@ -48,7 +96,10 @@ function ThreadCard({
           <p>
             Posted by
             {' '}
-            <span className="font-semibold">Ajeng</span>
+            {/* <div className="h-5 w-5">
+              <img src={user.avatar} alt={user} />
+            </div> */}
+            <span className="font-semibold">Kazuha</span>
           </p>
 
         </div>

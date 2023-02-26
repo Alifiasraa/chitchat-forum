@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import ThreadList from '../components/ThreadList';
@@ -34,7 +35,7 @@ function HomePage() {
 
   return (
     <div className="bg-[#fef6e4] min-h-screen">
-      <div className="flex flex-row justify-center my-6">
+      <div className="flex flex-row justify-center mx-20">
         <SideBar />
         <ThreadList threads={threadList} upvote={onUpvote} downvote={onDownvote} />
       </div>

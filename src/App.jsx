@@ -7,11 +7,11 @@ import RegisterPage from './pages/RegisterPage';
 import Detailpage from './pages/DetailPage';
 import { asyncPreloadProcess } from './states/isPreload/action';
 import Navigation from './components/Navigation';
-import Loading from './components/Loading';
+// import Loading from './components/Loading';
 
 function App() {
   const {
-    authUser = null,
+    // authUser = null,
     isPreload = false,
   } = useSelector((states) => states);
 
@@ -25,32 +25,35 @@ function App() {
     return null;
   }
 
-  if (authUser === null) {
-    return (
-      <>
-        <Loading />
-        <main>
-          <Routes>
-            <Route path="/*" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-          </Routes>
-        </main>
-      </>
-    );
-  }
+  // if (authUser === null) {
+  //   return (
+  //     <>
+  //       <Loading />
+  //       <main>
+  //         <Routes>
+  //           <Route path="/*" element={<LoginPage />} />
+  //           <Route path="/register" element={<RegisterPage />} />
+  //         </Routes>
+  //       </main>
+  //     </>
+  //   );
+  // }
 
   return (
-    <>
+    <div className="bg-[#fef6e4] min-h-screen">
+      {/* <Loading /> */}
       <header>
         <Navigation />
       </header>
       <main>
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/*" element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
           <Route path="/detail" element={<Detailpage />} />
         </Routes>
       </main>
-    </>
+    </div>
   );
 }
 
