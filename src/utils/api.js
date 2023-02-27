@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 const api = (() => {
   const BASE_URL = 'https://forum-api.dicoding.dev/v1';
 
@@ -6,7 +7,6 @@ const api = (() => {
       ...options,
       headers: {
         ...options.headers,
-        // eslint-disable-next-line no-use-before-define
         Authorization: `Bearer ${getAccessToken()}`,
       },
     });

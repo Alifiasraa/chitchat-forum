@@ -69,7 +69,7 @@ function asyncToggleUpvoteThread(threadId) {
       await api.upvoteThread(threadId);
     } catch (error) {
       alert(error.message);
-      dispatchEvent(toggleUpvoteThreadActionCreator({ threadId, userId: authUser.id }));
+      dispatch(toggleUpvoteThreadActionCreator({ threadId, userId: authUser.id }));
     }
     // dispatch(hideLoading());
   };
@@ -85,7 +85,7 @@ function asyncToggleDownvoteThread(threadId) {
       await api.downvoteThread(threadId);
     } catch (error) {
       alert(error.message);
-      dispatchEvent(toggleDownvoteThreadActionCreator({ threadId, userId: authUser.id }));
+      dispatch(toggleDownvoteThreadActionCreator({ threadId, userId: authUser.id }));
     }
     // dispatch(hideLoading());
   };

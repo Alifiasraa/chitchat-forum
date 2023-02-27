@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import ThreadList from '../components/ThreadList';
 import SideBar from '../components/SideBar';
 import asyncPopulateUserAndThreads from '../states/shared/action';
-import { asyncToggleDownvoteThread, asyncToggleUpvoteThread } from '../states/thread/action';
+import { asyncToggleDownvoteThread, asyncToggleUpvoteThread } from '../states/threads/action';
 
 function HomePage() {
   const {

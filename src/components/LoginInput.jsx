@@ -11,18 +11,20 @@ function LoginInput() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const onLogin = () => {
+  const onLogin = (event) => {
+    event.preventDefault();
     dispatch(asyncSetAuthUser({ email, password }));
     navigate('/');
   };
 
   return (
-    <form className="w-1/2 bg-transparent px-8 pt-6 pb-8 mb-4 flex flex-col justify-center">
+    <form onSubmit={onLogin} className="w-1/2 bg-transparent px-8 pt-6 pb-8 mb-4 flex flex-col justify-center">
       <div className="mb-4 mx-auto w-full">
         <label htmlFor="email" className="block text-[#001858] font-semibold mb-2">
           Email
         </label>
         <input
+          name="email"
           type="email"
           placeholder="Email"
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -35,6 +37,7 @@ function LoginInput() {
           Password
         </label>
         <input
+          name="password"
           type="password"
           placeholder="Password"
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -47,7 +50,6 @@ function LoginInput() {
         <button
           type="submit"
           className="bg-[#fef6e4] text-[#001858] hover:bg-[#ff8ba7] w-1/3 font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          onClick={onLogin}
         >
           Login
         </button>

@@ -12,13 +12,14 @@ function RegisterInput() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const onRegister = () => {
+  const onRegister = (event) => {
+    event.preventDefault();
     dispatch(asyncRegisterUser({ name, email, password }));
     navigate('/login');
   };
 
   return (
-    <form className="w-1/2 bg-transparent px-8 pt-6 pb-8 mb-4 flex flex-col justify-center">
+    <form onSubmit={onRegister} className="w-1/2 bg-transparent px-8 pt-6 pb-8 mb-4 flex flex-col justify-center">
       <div className="mb-4 mx-auto w-full">
         <label htmlFor="email" className="block text-[#001858] font-semibold mb-2">
           Name
@@ -60,7 +61,6 @@ function RegisterInput() {
         <button
           type="submit"
           className="bg-[#fef6e4] text-[#001858] hover:bg-[#ff8ba7] w-1/3 font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          onClick={onRegister}
         >
           Register
         </button>

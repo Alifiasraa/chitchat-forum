@@ -2,7 +2,8 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
 import {
-  AiOutlineLike, AiOutlineDislike, AiOutlineComment, AiOutlineClockCircle,
+  AiOutlineLike, AiOutlineDislike, AiFillLike, AiFillDislike,
+  AiOutlineComment, AiOutlineClockCircle,
 } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
 import postedAt from '../utils';
@@ -61,7 +62,9 @@ function ThreadCard({
               upvote && (
               <>
                 <button type="button" aria-label="upvote" onClick={onUpvoteClick}>
-                  { isThreadUpvoted ? <AiOutlineLike size={22} style={{ color: 'red' }} /> : <AiOutlineLike size={22} /> }
+                  { isThreadUpvoted
+                    ? <AiFillLike size={22} />
+                    : <AiOutlineLike size={22} /> }
                 </button>
                 <span>{upVotesBy.length}</span>
               </>
@@ -71,21 +74,14 @@ function ThreadCard({
               downvote && (
               <>
                 <button type="button" aria-label="downvote" onClick={onDownvoteClick}>
-                  { isThreadDownvoted ? <AiOutlineDislike size={22} style={{ color: 'red' }} /> : <AiOutlineDislike size={22} /> }
+                  { isThreadDownvoted
+                    ? <AiFillDislike size={22} />
+                    : <AiOutlineDislike size={22} /> }
                 </button>
                 <span>{downVotesBy.length}</span>
               </>
               )
             }
-            {/* <button type="button">
-              <AiOutlineLike size={22} />
-            </button>
-            <span>{upvote}</span> */}
-
-            {/* <button type="button">
-              <AiOutlineDislike size={22} />
-            </button>
-            <span>{downvote}</span> */}
 
             <button type="button">
               <AiOutlineComment size={22} />
