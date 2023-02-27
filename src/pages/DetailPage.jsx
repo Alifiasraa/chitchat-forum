@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import CommentInput from '../components/CommentInput';
 import { asyncReceiveThreadDetail, asyncToggleDownvoteThreadDetail, asyncToggleUpvoteThreadDetail } from '../states/threadDetail/action';
 import ThreadDetail from '../components/ThreadDetail';
+import Comments from '../components/Comments';
 
 function Detailpage() {
   const { id } = useParams();
@@ -34,12 +35,10 @@ function Detailpage() {
 
   return (
     <div className="w-3/5 mx-auto">
-      <Link to="/">
-        <a className="flex items-center ml-3 mt-4">
-          <BiArrowBack size={22} />
-          {' '}
-          <span className="ml-1 font-medium">Kembali</span>
-        </a>
+      <Link to="/" className="flex items-center ml-3 mt-4">
+        <BiArrowBack size={22} />
+        {' '}
+        <span className="ml-1 font-medium">Kembali</span>
       </Link>
       <ThreadDetail
         {...threadDetail}
@@ -48,6 +47,7 @@ function Detailpage() {
         downvoteThread={onDownvoteThread}
       />
       <CommentInput />
+      <Comments />
     </div>
   );
 }

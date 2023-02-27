@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { asyncCreateComment } from '../states/comments/action';
+import { asyncCreateComment } from '../states/threadDetail/action';
 
 function CommentInput() {
   const [content, setContent] = useState('');

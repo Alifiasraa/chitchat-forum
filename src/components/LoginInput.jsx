@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import useInput from '../hooks/useInput';
 import { asyncSetAuthUser } from '../states/authUser/action';
@@ -9,12 +9,10 @@ function LoginInput() {
   const [password, setPassword] = useInput('');
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const onLogin = (event) => {
     event.preventDefault();
     dispatch(asyncSetAuthUser({ email, password }));
-    navigate('/');
   };
 
   return (
