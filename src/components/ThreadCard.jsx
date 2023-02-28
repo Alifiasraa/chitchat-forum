@@ -11,7 +11,7 @@ import postedAt from '../utils';
 // user blm dimasukin kesini
 function ThreadCard({
   id, title, body, category, createdAt, upVotesBy, downVotesBy, totalComments,
-  upvote, downvote, authUser,
+  upvote, downvote, authUser, user,
 }) {
   const navigate = useNavigate();
   const isThreadUpvoted = upVotesBy.includes(authUser);
@@ -38,8 +38,8 @@ function ThreadCard({
   };
 
   return (
-    <div className="flex justify-center">
-      <div onClick={onThreadClick} onKeyDown={onThreadPress} className="min-h-fit w-2/3 border-2 rounded-2xl p-6 m-3 shadow-slate-300 bg-[#f3d2c1]">
+    <div className="flex justify-center border">
+      <div onClick={onThreadClick} onKeyDown={onThreadPress} className="min-h-fit w-full border-2 rounded-2xl mb-3 p-6 shadow-slate-300 bg-[#f3d2c1]">
         <div className="border rounded-md border-slate-600 max-w-fit px-2">{category}</div>
 
         <div className="flex items-center justify-between">
@@ -89,14 +89,14 @@ function ThreadCard({
             <span>{totalComments}</span>
           </div>
 
-          <p>
+          <div className="flex gap-2">
             Posted by
             {' '}
-            {/* <div className="h-5 w-5">
+            <div className="h-5 w-5">
               <img src={user.avatar} alt={user} />
-            </div> */}
-            <span className="font-semibold">Kazuha</span>
-          </p>
+            </div>
+            <span className="font-semibold">{user?.name}</span>
+          </div>
 
         </div>
       </div>

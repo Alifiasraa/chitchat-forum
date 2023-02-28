@@ -38,7 +38,7 @@ function toggleUpvoteThreadActionCreator({ threadId, userId }) {
 
 function toggleDownvoteThreadActionCreator({ threadId, userId }) {
   return {
-    type: ActionType.TOGGLE_UPVOTE_THREAD,
+    type: ActionType.TOGGLE_DOWNVOTE_THREAD,
     payload: {
       threadId,
       userId,

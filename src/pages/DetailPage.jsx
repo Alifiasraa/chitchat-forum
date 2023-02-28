@@ -29,6 +29,10 @@ function Detailpage() {
     dispatch(asyncToggleDownvoteThreadDetail());
   };
 
+  // const upvoteComment = () => {
+  //   dispatch(asyncUpvoteComment(threadId, commentId));
+  // }
+
   if (!threadDetail) {
     return null;
   }
@@ -47,7 +51,10 @@ function Detailpage() {
         downvoteThread={onDownvoteThread}
       />
       <CommentInput />
-      <Comments />
+      {threadDetail.comments.map((comment) => (
+        <Comments key={comment.id} content={comment.content} />
+      ))}
+
     </div>
   );
 }
