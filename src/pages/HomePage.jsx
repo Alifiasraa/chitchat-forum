@@ -19,10 +19,6 @@ function HomePage() {
     dispatch(asyncPopulateUserAndThreads());
   }, [dispatch]);
 
-  // const onAddThread = ({ title, body, category }) => {
-  //   dispatch(asyncAddThread({ title, body, category }));
-  // };
-
   const onUpvote = (id) => {
     dispatch(asyncToggleUpvoteThread(id));
   };

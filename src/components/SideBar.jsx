@@ -1,14 +1,19 @@
 /* eslint-disable no-redeclare */
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { asyncAddThread } from '../states/threads/action';
 
 function SideBar({ user }) {
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('');
   const [body, setBody] = useState('');
 
-  function addThread() {
+  const dispatch = useDispatch();
+
+  function addThread(event) {
+    event.preventDefault();
     if (body.trim()) {
-      addThread({ title, body, category });
+      dispatch(asyncAddThread({ title, body, category }));
       setTitle('');
       setCategory('');
       setBody('');
@@ -41,7 +46,7 @@ function SideBar({ user }) {
       </div>
 
       <h1 className="mt-5 mb-3 font-semibold text-lg">Lets Start The Disscusion!</h1>
-      <form className="mx-5">
+      <form onSubmit={addThread} className="mx-5">
         <label htmlFor="title" className="text-left text-[#001858] font-semibold">
           Title
         </label>
@@ -77,7 +82,7 @@ function SideBar({ user }) {
         />
 
         <div className="flex justify-center">
-          <button type="button" onClick={() => addThread({ title, category, body })} className="rounded-3xl w-3/4 bg-[#8bd3dd] hover:bg-[#aee9f1] py-2 px-8 my-5 font-semibold">
+          <button type="submit" className="rounded-3xl w-3/4 bg-[#8bd3dd] hover:bg-[#aee9f1] py-2 px-8 my-5 font-semibold">
             Send
           </button>
         </div>
