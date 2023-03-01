@@ -1,7 +1,7 @@
 /* eslint-disable no-redeclare */
 import React, { useState } from 'react';
 
-function SideBar({ owner, addThread }) {
+function SideBar({ user }) {
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('');
   const [body, setBody] = useState('');
@@ -33,17 +33,15 @@ function SideBar({ owner, addThread }) {
     <div className="flex flex-col w-full min-h-min items-center border-2 rounded-2xl p-6 shadow-slate-300 bg-[#f3d2c1]">
       <h1 className="font-semibold text-lg mb-2">My Profile</h1>
       <div className="flex items-center gap-4 border rounded-lg px-8 py-3 border-black ">
-        <div className="w-20 h-20 my-2 bg-slate-300 rounded-full">
-          <img src="" alt="." />
-        </div>
+        <img src={user.avatar} alt="avatar" className="w-20 h-20 my-2 bg-slate-300 rounded-full" />
         <div>
-          <h1 className="font-semibold">{owner?.name}</h1>
-          <p>Kazuha@gmail.com</p>
+          <h1 className="font-semibold">{user?.name}</h1>
+          <p>{user.email}</p>
         </div>
       </div>
 
       <h1 className="mt-5 mb-3 font-semibold text-lg">Lets Start The Disscusion!</h1>
-      <form onSubmit={addThread} className="mx-5">
+      <form className="mx-5">
         <label htmlFor="title" className="text-left text-[#001858] font-semibold">
           Title
         </label>
@@ -79,7 +77,7 @@ function SideBar({ owner, addThread }) {
         />
 
         <div className="flex justify-center">
-          <button type="submit" className="rounded-3xl w-3/4 bg-[#8bd3dd] hover:bg-[#aee9f1] py-2 px-8 my-5 font-semibold">
+          <button type="button" onClick={() => addThread({ title, category, body })} className="rounded-3xl w-3/4 bg-[#8bd3dd] hover:bg-[#aee9f1] py-2 px-8 my-5 font-semibold">
             Send
           </button>
         </div>

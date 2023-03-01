@@ -5,7 +5,10 @@ import { Link, useParams } from 'react-router-dom';
 import { BiArrowBack } from 'react-icons/bi';
 import { useDispatch, useSelector } from 'react-redux';
 import CommentInput from '../components/CommentInput';
-import { asyncReceiveThreadDetail, asyncToggleDownvoteThreadDetail, asyncToggleUpvoteThreadDetail } from '../states/threadDetail/action';
+import {
+  asyncDownvoteComment, asyncReceiveThreadDetail, asyncToggleDownvoteThreadDetail,
+  asyncToggleUpvoteThreadDetail, asyncUpvoteComment,
+} from '../states/threadDetail/action';
 import ThreadDetail from '../components/ThreadDetail';
 import Comments from '../components/Comments';
 
@@ -29,9 +32,13 @@ function Detailpage() {
     dispatch(asyncToggleDownvoteThreadDetail());
   };
 
-  // const upvoteComment = () => {
-  //   dispatch(asyncUpvoteComment(threadId, commentId));
-  // }
+  const onUpvoteComment = (threadId, commentId) => {
+    dispatch(asyncUpvoteComment(threadId, commentId));
+  };
+
+  const onDownvoteComment = (threadId, commentId) => {
+    dispatch(asyncDownvoteComment(threadId, commentId));
+  };
 
   if (!threadDetail) {
     return null;
@@ -52,7 +59,13 @@ function Detailpage() {
       />
       <CommentInput />
       {threadDetail.comments.map((comment) => (
-        <Comments key={comment.id} {...comment} authUser={authUser.id} />
+        <Comments
+          key={comment.id}
+          {...comment}
+          authUser={authUser.id}
+          upvoteComment={onUpvoteComment}
+          downvoteComment={onDownvoteComment}
+        />
       ))}
 
     </div>

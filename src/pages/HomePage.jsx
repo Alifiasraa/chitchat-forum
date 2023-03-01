@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import ThreadList from '../components/ThreadList';
 import SideBar from '../components/SideBar';
 import asyncPopulateUserAndThreads from '../states/shared/action';
-import { asyncAddThread, asyncToggleDownvoteThread, asyncToggleUpvoteThread } from '../states/threads/action';
+import { asyncToggleDownvoteThread, asyncToggleUpvoteThread } from '../states/threads/action';
 
 function HomePage() {
   const {
@@ -19,9 +19,9 @@ function HomePage() {
     dispatch(asyncPopulateUserAndThreads());
   }, [dispatch]);
 
-  const onAddThread = ({ title, body, category }) => {
-    dispatch(asyncAddThread({ title, body, category }));
-  };
+  // const onAddThread = ({ title, body, category }) => {
+  //   dispatch(asyncAddThread({ title, body, category }));
+  // };
 
   const onUpvote = (id) => {
     dispatch(asyncToggleUpvoteThread(id));
@@ -39,9 +39,9 @@ function HomePage() {
 
   return (
     <div className="bg-[#fef6e4] min-h-screen">
-      <div className="flex flex-row justify-center mx-36 my-3 gap-4">
-        <div className="w-1/3">
-          <SideBar addThread={onAddThread} threads={threadList} />
+      <div className=" flex flex-row justify-center mx-36 my-3 gap-4">
+        <div className=" w-1/3">
+          <SideBar user={authUser} />
         </div>
         <div className="w-2/3">
           <ThreadList threads={threadList} upvote={onUpvote} downvote={onDownvote} />

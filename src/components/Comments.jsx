@@ -1,14 +1,25 @@
 import React from 'react';
 import {
-  AiOutlineLike, AiOutlineDislike, AiOutlineClockCircle,
+  AiOutlineLike, AiOutlineDislike, AiFillLike, AiFillDislike, AiOutlineClockCircle,
 } from 'react-icons/ai';
 import postedAt from '../utils';
 
 function Comments({
-  content, createdAt, upVotesBy, downVotesBy, owner,
+  content, createdAt, upVotesBy, downVotesBy, owner, authUser,
+  upvoteComment, downvoteComment, threadId, commentId,
 }) {
-  // const isCommentUpvoted = upVotesBy.includes(authUser);
-  // const isCommentDownvoted = downVotesBy.includes(authUser);
+  const isCommentUpvoted = upVotesBy.includes(authUser);
+  const isCommentDownvoted = downVotesBy.includes(authUser);
+
+  const onUpvoteClick = (event) => {
+    event.stopPropagation();
+    upvoteComment(threadId, commentId);
+  };
+
+  const onDownvoteClick = (event) => {
+    event.stopPropagation();
+    downvoteComment(threadId, commentId);
+  };
 
   return (
     <div className="flex">
@@ -32,23 +43,23 @@ function Comments({
 
         <div className="flex justify-between items-center mt-5">
           <div className="flex gap-2">
-            <button type="button" aria-label="upvote">
+            <button type="button" aria-label="upvote" onClick={onUpvoteClick}>
               {' '}
-              <AiOutlineLike size={22} />
-              {/* { isCommentUpvoted
+              {/* <AiOutlineLike size={22} /> */}
+              { isCommentUpvoted
                 ? <AiFillLike size={22} />
-                : <AiOutlineLike size={22} /> } */}
+                : <AiOutlineLike size={22} /> }
             </button>
-            <span>{upVotesBy}</span>
+            <span>{upVotesBy.length}</span>
 
-            <button type="button" aria-label="downvote">
+            <button type="button" aria-label="downvote" onClick={onDownvoteClick}>
               {' '}
-              <AiOutlineDislike size={22} />
-              {/* { isCommentDownvoted
+              {/* <AiOutlineDislike size={22} /> */}
+              { isCommentDownvoted
                 ? <AiFillDislike size={22} />
-                : <AiOutlineDislike size={22} /> } */}
+                : <AiOutlineDislike size={22} /> }
             </button>
-            <span>{downVotesBy}</span>
+            <span>{downVotesBy.length}</span>
           </div>
         </div>
       </div>
