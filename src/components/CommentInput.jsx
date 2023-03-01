@@ -37,7 +37,7 @@ function CommentInput() {
       </div>
 
       <button type="submit" onClick={createCommentHandler} className="border w-1/5 rounded-3xl mr-3 bg-[#ff8ba7] hover:bg-[#ffc6c7] py-2 px-8 font-semibold text-center">
-        Tambahkan
+        Send
       </button>
     </div>
   );

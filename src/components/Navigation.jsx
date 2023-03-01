@@ -15,7 +15,7 @@ function Navigation() {
   };
 
   return (
-    <div className=" flex justify-center gap-10 py-3">
+    <div className="flex justify-center gap-10 py-3">
       <span className="flex items-center">
         <img className="h-7" src={chitchat} alt="font chitchat" />
       </span>

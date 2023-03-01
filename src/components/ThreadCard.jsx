@@ -38,7 +38,7 @@ function ThreadCard({
   };
 
   return (
-    <div className="flex justify-center border">
+    <div className="flex justify-center">
       <div onClick={onThreadClick} onKeyDown={onThreadPress} className="min-h-fit w-full border-2 rounded-2xl mb-3 p-6 shadow-slate-300 bg-[#f3d2c1]">
         <div className="border rounded-md border-slate-600 max-w-fit px-2">{category}</div>
 
@@ -89,12 +89,10 @@ function ThreadCard({
             <span>{totalComments}</span>
           </div>
 
-          <div className="flex gap-2">
+          <div className="flex gap-1 items-center">
             Posted by
             {' '}
-            <div className="h-5 w-5">
-              <img src={user.avatar} alt={user} />
-            </div>
+            <img src={user.avatar} alt={user} className="h-5 w-5 border rounded-full" />
             <span className="font-semibold">{user?.name}</span>
           </div>
 

@@ -42,7 +42,7 @@ function Detailpage() {
       <Link to="/" className="flex items-center ml-3 mt-4">
         <BiArrowBack size={22} />
         {' '}
-        <span className="ml-1 font-medium">Kembali</span>
+        <span className="ml-1 font-medium">Back</span>
       </Link>
       <ThreadDetail
         {...threadDetail}
