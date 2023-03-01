@@ -6,7 +6,7 @@ import postedAt from '../utils';
 
 function ThreadDetail({
   id, title, body, category, createdAt, upvoteThread, downvoteThread,
-  upVotesBy, downVotesBy, authUser, user,
+  upVotesBy, downVotesBy, authUser, owner,
 }) {
   const isThreadUpvoted = upVotesBy.includes(authUser);
   const isThreadDownvoted = downVotesBy.includes(authUser);
@@ -48,13 +48,11 @@ function ThreadDetail({
 
           </div>
 
-          <p>
+          <p className="flex gap-1 items-center">
             Posted by
             {' '}
-            {/* <div className="h-5 w-5">
-              <img src={user.avatar} alt={user} />
-            </div> */}
-            <span className="font-semibold">{user?.name}</span>
+            <img src={owner.avatar} alt="avatar" className="h-5 w-5 border rounded-full" />
+            <span className="font-semibold">{owner?.name}</span>
           </p>
 
         </div>

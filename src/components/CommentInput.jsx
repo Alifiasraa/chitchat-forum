@@ -30,7 +30,7 @@ function CommentInput() {
       <div className="border border-slate-600 rounded-3xl w-full p-2 ml-3 inline justify-center relative">
         <input
           className="pl-2 w-full focus:outline-none bg-transparent"
-          placeholder="Tambahkan komentar"
+          placeholder="Talk your reply ..."
           value={content}
           onChange={handleContentChange}
         />

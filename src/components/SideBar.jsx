@@ -1,7 +1,7 @@
 /* eslint-disable no-redeclare */
 import React, { useState } from 'react';
 
-function SideBar(addThread) {
+function SideBar({ owner, addThread }) {
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('');
   const [body, setBody] = useState('');
@@ -37,7 +37,7 @@ function SideBar(addThread) {
           <img src="" alt="." />
         </div>
         <div>
-          <h1 className="font-semibold">Kazuha</h1>
+          <h1 className="font-semibold">{owner?.name}</h1>
           <p>Kazuha@gmail.com</p>
         </div>
       </div>

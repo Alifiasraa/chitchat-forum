@@ -52,7 +52,7 @@ function Detailpage() {
       />
       <CommentInput />
       {threadDetail.comments.map((comment) => (
-        <Comments key={comment.id} content={comment.content} />
+        <Comments key={comment.id} {...comment} authUser={authUser.id} />
       ))}
 
     </div>
