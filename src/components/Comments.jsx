@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import React from 'react';
 import {
   AiOutlineLike, AiOutlineDislike, AiFillLike, AiFillDislike, AiOutlineClockCircle,
@@ -23,7 +24,7 @@ function Comments({
 
   return (
     <div className="flex">
-      <div className="min-h-fit w-full border-2 rounded-2xl p-6 m-3 shadow-slate-300 bg-[#f3d2c1]">
+      <div className="min-h-fit w-full border-2 rounded-2xl p-6 mx-3 mt-3 mb-1 shadow-slate-300 bg-[#f3d2c1]">
         <div className="flex items-center">
           <img src={owner.avatar} alt="o" className="w-10 h-10 bg-slate-500" />
           <div className="flex flex-col ml-3">
@@ -35,10 +36,11 @@ function Comments({
           </div>
         </div>
 
+        {/* menampilkan data comments supaya html nya tidak terlihat */}
         <div className="mt-3">
-          <p>
-            {content}
-          </p>
+          <div
+            dangerouslySetInnerHTML={{ __html: content }}
+          />
         </div>
 
         <div className="flex justify-between items-center mt-5">

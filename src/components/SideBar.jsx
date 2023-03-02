@@ -45,7 +45,7 @@ function SideBar({ user }) {
         </div>
       </div>
 
-      <h1 className="mt-5 mb-3 font-semibold text-lg">Lets Start The Disscusion!</h1>
+      <h1 className="mt-5 mb-3 font-semibold text-lg">Lets Start The Discussion!</h1>
       <form onSubmit={addThread} className="mx-5">
         <label htmlFor="title" className="text-left text-[#001858] font-semibold">
           Title
@@ -64,7 +64,7 @@ function SideBar({ user }) {
         <input
           name="category"
           type="text"
-          placeholder="Email"
+          placeholder="Category"
           className="shadow border rounded w-full mt-2 mb-3 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           value={category}
           onChange={handleCategoryChange}

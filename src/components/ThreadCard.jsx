@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
@@ -8,7 +9,6 @@ import {
 import { useNavigate } from 'react-router-dom';
 import postedAt from '../utils';
 
-// user blm dimasukin kesini
 function ThreadCard({
   id, title, body, category, createdAt, upVotesBy, downVotesBy, totalComments,
   upvote, downvote, authUser, user,
@@ -52,9 +52,10 @@ function ThreadCard({
           </div>
         </div>
 
-        <div>
-          {body}
-        </div>
+        {/* menampilkan data thread supaya html nya tidak terlihat */}
+        <div
+          dangerouslySetInnerHTML={{ __html: body }}
+        />
 
         <div className="flex justify-between items-center mt-8">
           <div className="flex gap-2">

@@ -7,7 +7,7 @@ import RegisterPage from './pages/RegisterPage';
 import Detailpage from './pages/DetailPage';
 import { asyncPreloadProcess } from './states/isPreload/action';
 import Navigation from './components/Navigation';
-// import Loading from './components/Loading';
+import Loading from './components/Loading';
 
 function App() {
   const {
@@ -28,7 +28,7 @@ function App() {
   if (authUser === null) {
     return (
       <>
-        {/* <Loading /> */}
+        <Loading />
         <main>
           <Routes>
             <Route path="/*" element={<LoginPage />} />
@@ -41,7 +41,7 @@ function App() {
 
   return (
     <div className="bg-[#fef6e4] min-h-screen">
-      {/* <Loading /> */}
+      <Loading />
       <header>
         <Navigation />
       </header>

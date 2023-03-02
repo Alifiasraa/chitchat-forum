@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import React from 'react';
 import {
   AiOutlineLike, AiOutlineDislike, AiFillLike, AiFillDislike, AiOutlineClockCircle,
@@ -27,7 +28,9 @@ function ThreadDetail({
         </div>
 
         <div>
-          {body}
+          <div
+            dangerouslySetInnerHTML={{ __html: body }}
+          />
         </div>
 
         <div className="flex justify-between items-center mt-8">
