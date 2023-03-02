@@ -44,16 +44,6 @@ function threadDetailReducer(threadDetail = null, action = {}) {
           } return comment;
         }),
       };
-      // return threadDetail.comments.map((comment) => {
-      //   if (comment.id === action.payload.commentId) {
-      //     return {
-      //       ...comment,
-      //       upVotesBy: comment.upVotesBy.includes(action.payload.commentId)
-      //         ? comment.upVotesBy.filter((id) => id !== action.payload.commentId)
-      //         : comment.upVotesBy.concat([action.payload.commentId]),
-      //     };
-      //   } return threadDetail;
-      // });
     case ActionType.TOGGLE_DOWNVOTE_COMMENT:
       return {
         ...threadDetail,
