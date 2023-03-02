@@ -37,11 +37,13 @@ function SideBar({ user }) {
   return (
     <div className="flex flex-col w-full min-h-min items-center border-2 rounded-2xl p-6 shadow-slate-300 bg-[#f3d2c1]">
       <h1 className="font-semibold text-lg mb-2">My Profile</h1>
-      <div className="flex items-center gap-4 border rounded-lg px-8 py-3 border-black ">
-        <img src={user.avatar} alt="avatar" className="w-20 h-20 my-2 bg-slate-300 rounded-full" />
-        <div>
-          <h1 className="font-semibold">{user?.name}</h1>
-          <p>{user.email}</p>
+      <div className="w-full">
+        <div className="flex justify-center items-center gap-4 border rounded-lg mx-5 px-8 py-3 border-black ">
+          <img src={user.avatar} alt="avatar" className="w-20 h-20 my-2 bg-slate-300 rounded-full" />
+          <div>
+            <h1 className="font-semibold">{user?.name}</h1>
+            <p>{user.email}</p>
+          </div>
         </div>
       </div>
 
