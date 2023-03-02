@@ -12,6 +12,18 @@ function LoginInput() {
 
   const onLogin = (event) => {
     event.preventDefault();
+    if (!email || !password) {
+      alert('Email dan password wajib diisi');
+      return;
+    }
+    if (email.length < 6 || email.length > 100) {
+      alert('Email harus lebih dari 6 karakter dan kurang dari 100 karakter');
+      return;
+    }
+    if (password.length < 5 || password.length > 20) {
+      alert('Password harus lebih dari 5 karakter dan kurang dari 20 karakter');
+      return;
+    }
     dispatch(asyncSetAuthUser({ email, password }));
   };
 
