@@ -40,9 +40,9 @@ function App() {
   }
 
   return (
-    <div className="bg-[#fef6e4] min-h-screen">
+    <div className="bg-[#fef6e4] min-h-screen relative">
       <Loading />
-      <header>
+      <header className="sticky top-0 bg-[#fef6e4]">
         <Navigation />
       </header>
       <main>

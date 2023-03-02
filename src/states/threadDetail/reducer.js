@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { ActionType } from './action';
 
 function threadDetailReducer(threadDetail = null, action = {}) {
@@ -29,27 +30,44 @@ function threadDetailReducer(threadDetail = null, action = {}) {
         ],
       };
     case ActionType.TOGGLE_UPVOTE_COMMENT:
-      return threadDetail.comments.map((comment) => {
-        if (comment.id === action.payload.commentId) {
-          return {
-            ...comment,
-            upVotesBy: comment.upVotesBy.includes(action.payload.commentId)
-              ? comment.upVotesBy.filter((id) => id !== action.payload.commentId)
-              : comment.upVotesBy.concat([action.payload.commentId]),
-          };
-        } return threadDetail;
-      });
+      console.log(threadDetail);
+      return {
+        ...threadDetail,
+        comments: threadDetail.comments.map((comment) => {
+          if (comment.id === action.payload.commentId) {
+            return {
+              ...comment,
+              upVotesBy: comment.upVotesBy.includes(action.payload.commentId)
+                ? comment.upVotesBy.filter((id) => id !== action.payload.commentId)
+                : comment.upVotesBy.concat([action.payload.commentId]),
+            };
+          } return comment;
+        }),
+      };
+      // return threadDetail.comments.map((comment) => {
+      //   if (comment.id === action.payload.commentId) {
+      //     return {
+      //       ...comment,
+      //       upVotesBy: comment.upVotesBy.includes(action.payload.commentId)
+      //         ? comment.upVotesBy.filter((id) => id !== action.payload.commentId)
+      //         : comment.upVotesBy.concat([action.payload.commentId]),
+      //     };
+      //   } return threadDetail;
+      // });
     case ActionType.TOGGLE_DOWNVOTE_COMMENT:
-      return threadDetail.comments.map((comment) => {
-        if (comment.id === action.payload.commentId) {
-          return {
-            ...comment,
-            downVotesBy: comment.upVotesBy.includes(action.payload.commentId)
-              ? comment.downVotesBy.filter((id) => id !== action.payload.commentId)
-              : comment.downVotesBy.concat([action.payload.commentId]),
-          };
-        } return threadDetail;
-      });
+      return {
+        ...threadDetail,
+        comments: threadDetail.comments.map((comment) => {
+          if (comment.id === action.payload.commentId) {
+            return {
+              ...comment,
+              downVotesBy: comment.downVotesBy.includes(action.payload.commentId)
+                ? comment.downVotesBy.filter((id) => id !== action.payload.commentId)
+                : comment.downVotesBy.concat([action.payload.commentId]),
+            };
+          } return comment;
+        }),
+      };
     default:
       return threadDetail;
   }

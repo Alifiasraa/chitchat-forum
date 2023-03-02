@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { BiArrowBack } from 'react-icons/bi';
@@ -52,16 +50,30 @@ function Detailpage() {
         <span className="ml-1 font-medium">Back</span>
       </Link>
       <ThreadDetail
-        {...threadDetail}
-        authUser={authUser.id}
+        // cara benernya kalo ga pake spread operator ...threadDetail
+        id={id}
+        title={threadDetail.title}
+        body={threadDetail.body}
+        category={threadDetail.category}
+        createdAt={threadDetail.createdAt}
+        upVotesBy={threadDetail.upVotesBy}
+        downVotesBy={threadDetail.downVotesBy}
+        authUser={threadDetail.authUser}
+        owner={threadDetail.owner}
         upvoteThread={onUpvoteThread}
         downvoteThread={onDownvoteThread}
       />
       <CommentInput />
-      {threadDetail.comments.map((comment) => (
+      {threadDetail?.comments?.map((comment) => (
         <Comments
+          content={comment.content}
+          createdAt={comment.createdAt}
+          upVotesBy={comment.upVotesBy}
+          downVotesBy={comment.downVotesBy}
+          owner={comment.owner}
+          commentId={comment.id}
           key={comment.id}
-          {...comment}
+          threadId={id}
           authUser={authUser.id}
           upvoteComment={onUpvoteComment}
           downvoteComment={onDownvoteComment}
