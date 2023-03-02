@@ -9,8 +9,8 @@ function ThreadDetail({
   id, title, body, category, createdAt, upvoteThread, downvoteThread,
   upVotesBy, downVotesBy, authUser, owner,
 }) {
-  const isThreadUpvoted = upVotesBy.includes(authUser);
-  const isThreadDownvoted = downVotesBy.includes(authUser);
+  const isThreadUpvoted = upVotesBy?.includes(authUser);
+  const isThreadDownvoted = downVotesBy?.includes(authUser);
 
   return (
     <div className="flex justify-center">
@@ -40,21 +40,21 @@ function ThreadDetail({
                 ? <AiFillLike size={22} />
                 : <AiOutlineLike size={22} /> }
             </button>
-            <span>{upVotesBy.length}</span>
+            <span>{upVotesBy?.length}</span>
 
             <button type="button" aria-label="downvote" onClick={() => downvoteThread(id)}>
               { isThreadDownvoted
                 ? <AiFillDislike size={22} />
                 : <AiOutlineDislike size={22} /> }
             </button>
-            <span>{downVotesBy.length}</span>
+            <span>{downVotesBy?.length}</span>
 
           </div>
 
           <p className="flex gap-1 items-center">
             Posted by
             {' '}
-            <img src={owner.avatar} alt="avatar" className="h-5 w-5 border rounded-full" />
+            <img src={owner?.avatar} alt="avatar" className="h-5 w-5 border rounded-full" />
             <span className="font-semibold">{owner?.name}</span>
           </p>
 
