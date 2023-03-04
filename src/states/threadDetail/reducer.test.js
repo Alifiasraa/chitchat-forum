@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
-/* eslint-disable max-len */
+
 /**
- * scenario for threadDetailReducer
+ * test scenario for threadDetailReducer
  *
  * threadDetailReducers function
  * - should return the initial state when given by unknown action
