@@ -1,3 +1,4 @@
+/* eslint-disable no-case-declarations */
 /* eslint-disable no-console */
 import { ActionType } from './action';
 
@@ -8,6 +9,9 @@ function threadDetailReducer(threadDetail = null, action = {}) {
     case ActionType.CLEAR_THREAD_DETAIL:
       return null;
     case ActionType.TOGGLE_UPVOTE_THREAD_DETAIL:
+      if (!threadDetail || !threadDetail.upVotesBy) {
+        return threadDetail;
+      }
       return {
         ...threadDetail,
         upVotesBy: threadDetail.upVotesBy.includes(action.payload.userId)
@@ -15,6 +19,9 @@ function threadDetailReducer(threadDetail = null, action = {}) {
           : threadDetail.upVotesBy.concat(action.payload.userId),
       };
     case ActionType.TOGGLE_DOWNVOTE_THREAD_DETAIL:
+      if (!threadDetail || !threadDetail.upVotesBy) {
+        return threadDetail;
+      }
       return {
         ...threadDetail,
         downVotesBy: threadDetail.downVotesBy.includes(action.payload.userId)
