@@ -47,7 +47,7 @@ function SideBar({ user }) {
         </div>
       </div>
 
-      <h1 className="mt-5 mb-3 font-semibold text-lg">Let&apos;s Start The Discussion</h1>
+      <h1 className="mt-5 mb-3 font-semibold text-lg">Let&apos;s Start The Discussion!</h1>
       <form onSubmit={addThread} className="mx-5">
         <label htmlFor="title" className="text-left text-[#001858] font-semibold">
           Title
