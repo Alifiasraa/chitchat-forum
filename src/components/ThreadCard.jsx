@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   AiOutlineLike, AiOutlineDislike, AiFillLike, AiFillDislike,
   AiOutlineComment, AiOutlineClockCircle,
@@ -102,5 +103,26 @@ function ThreadCard({
     </div>
   );
 }
+
+const userShape = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  avatar: PropTypes.string.isRequired,
+};
+
+ThreadCard.propTypes = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
+  createdAt: PropTypes.string.isRequired,
+  upVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
+  downVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
+  totalComments: PropTypes.number.isRequired,
+  upvote: PropTypes.func.isRequired,
+  downvote: PropTypes.func.isRequired,
+  authUser: PropTypes.string.isRequired,
+  user: PropTypes.shape(userShape).isRequired,
+};
 
 export default ThreadCard;

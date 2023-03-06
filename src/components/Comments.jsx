@@ -1,5 +1,6 @@
 /* eslint-disable react/no-danger */
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   AiOutlineLike, AiOutlineDislike, AiFillLike, AiFillDislike, AiOutlineClockCircle,
 } from 'react-icons/ai';
@@ -68,5 +69,23 @@ function Comments({
     </div>
   );
 }
+
+const ownerShape = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  avatar: PropTypes.string.isRequired,
+};
+Comments.propTypes = {
+  content: PropTypes.string.isRequired,
+  createdAt: PropTypes.string.isRequired,
+  upVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
+  downVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
+  owner: PropTypes.shape(ownerShape).isRequired,
+  authUser: PropTypes.string.isRequired,
+  upvoteComment: PropTypes.func.isRequired,
+  downvoteComment: PropTypes.func.isRequired,
+  threadId: PropTypes.string.isRequired,
+  commentId: PropTypes.string.isRequired,
+};
 
 export default Comments;
