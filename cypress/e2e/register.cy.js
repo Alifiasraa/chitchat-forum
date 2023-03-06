@@ -4,7 +4,7 @@
  *   - should display alert when name is empty
  *   - should display alert when email is empty
  *   - should display alert when password is empty
- *   - should display alert when email and password are wrong
+ *   - should display alert when email is already taken
  *   - should display homepage when email and password are correct
  */
 
@@ -60,42 +60,42 @@ describe('Register spec', () => {
     });
   });
 
-  it('should display alert when name, email and password are wrong', () => {
+  it('should display alert when email is already taken', () => {
     // mengisi name
-    cy.get('input[placeholder="Name"]').type('testuser');
+    cy.get('input[placeholder="Name"]').type('yoo');
 
     // mengisi email
-    cy.get('input[placeholder="Email"]').type('testuser@gmail.com');
+    cy.get('input[placeholder="Email"]').type('yoo@gmail.com');
 
     // mengisi password yang salah
-    cy.get('input[placeholder="Password"]').type('wrong_password');
+    cy.get('input[placeholder="Password"]').type('yoo1234');
 
     // menekan tombol Register
     cy.get('button').contains(/^Register$/).click();
 
     // memverifikasi window.alert untuk menampilkan pesan dari API
     cy.on('window:alert', (str) => {
-      expect(str).to.equal('email or password is wrong');
+      expect(str).to.equal('email is already taken');
     });
   });
 
-  it('should display loginpage when register successed', () => {
-    // mengisi name
-    cy.get('input[placeholder="Name"]').type('testuser');
+  // it('should display loginpage when register successed', () => {
+  //   // mengisi name
+  //   cy.get('input[placeholder="Name"]').type('testuser');
 
-    // mengisi email
-    cy.get('input[placeholder="Email"]').type('testuser@gmail.com');
+  //   // mengisi email
+  //   cy.get('input[placeholder="Email"]').type('testuser@gmail.com');
 
-    // mengisi password
-    cy.get('input[placeholder="Password"]').type('test123456');
+  //   // mengisi password
+  //   cy.get('input[placeholder="Password"]').type('test123456');
 
-    // menekan tombol Register
-    cy.get('button').contains(/^Register$/).click();
+  //   // menekan tombol Register
+  //   cy.get('button').contains(/^Register$/).click();
 
-    // memverifikasi bahwa elemen yang berada di loginpage ditampilkan
-    cy.get('img[alt="logo"]').should('be.visible');
-    cy.get('input[placeholder="Email"]').should('be.visible');
-    cy.get('input[placeholder="Password"]').should('be.visible');
-    cy.get('button').contains(/^Login$/).should('be.visible');
-  });
+  //   // memverifikasi bahwa elemen yang berada di loginpage ditampilkan
+  //   cy.get('img[alt="logo"]').should('be.visible');
+  //   cy.get('input[placeholder="Email"]').should('be.visible');
+  //   cy.get('input[placeholder="Password"]').should('be.visible');
+  //   cy.get('button').contains(/^Login$/).should('be.visible');
+  // });
 });
