@@ -84,7 +84,7 @@ describe('Register spec', () => {
     cy.get('input[placeholder="Name"]').type('testuser');
 
     // mengisi email
-    cy.get('input[placeholder="Email"]').type('testuser1@gmail.com');
+    cy.get('input[placeholder="Email"]').type('testuser@gmail.com');
 
     // mengisi password
     cy.get('input[placeholder="Password"]').type('test123456');

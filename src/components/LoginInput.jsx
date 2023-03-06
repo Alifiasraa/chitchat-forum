@@ -1,34 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import useInput from '../hooks/useInput';
-import { asyncSetAuthUser } from '../states/authUser/action';
 
-function LoginInput() {
+function LoginInput({ login }) {
   const [email, setEmail] = useInput('');
   const [password, setPassword] = useInput('');
 
-  const dispatch = useDispatch();
-
-  const onLogin = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    if (!email || !password) {
-      alert('Email dan password wajib diisi');
-      return;
-    }
-    if (email.length < 6 || email.length > 100) {
-      alert('Email harus lebih dari 6 karakter dan kurang dari 100 karakter');
-      return;
-    }
-    if (password.length < 5 || password.length > 20) {
-      alert('Password harus lebih dari 5 karakter dan kurang dari 20 karakter');
-      return;
-    }
-    dispatch(asyncSetAuthUser({ email, password }));
+    login({ email, password });
   };
 
   return (
-    <form onSubmit={onLogin} className="w-1/2 bg-transparent px-8 pt-6 pb-8 mb-4 flex flex-col justify-center">
+    <form onSubmit={handleSubmit} className="w-1/2 bg-transparent px-8 pt-6 pb-8 mb-4 flex flex-col justify-center">
       <div className="mb-4 mx-auto w-full">
         <label htmlFor="email" className="block text-[#001858] font-semibold mb-2">
           Email
@@ -73,5 +58,9 @@ function LoginInput() {
     </form>
   );
 }
+
+LoginInput.propTypes = {
+  login: PropTypes.func.isRequired,
+};
 
 export default LoginInput;

@@ -1,23 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import useInput from '../hooks/useInput';
-import { asyncRegisterUser } from '../states/users/action';
 
-function RegisterInput() {
+function RegisterInput({ register }) {
   const [name, setName] = useInput('');
   const [email, setEmail] = useInput('');
   const [password, setPassword] = useInput('');
 
-  const dispatch = useDispatch();
-
-  const onRegister = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(asyncRegisterUser({ name, email, password }));
+    register({ name, email, password });
   };
 
   return (
-    <form onSubmit={onRegister} className="w-1/2 bg-transparent px-8 pt-6 pb-8 mb-4 flex flex-col justify-center">
+    <form onSubmit={handleSubmit} className="w-1/2 bg-transparent px-8 pt-6 pb-8 mb-4 flex flex-col justify-center">
       <div className="mb-4 mx-auto w-full">
         <label htmlFor="email" className="block text-[#001858] font-semibold mb-2">
           Name
@@ -72,5 +69,9 @@ function RegisterInput() {
     </form>
   );
 }
+
+RegisterInput.propTypes = {
+  register: PropTypes.func.isRequired,
+};
 
 export default RegisterInput;

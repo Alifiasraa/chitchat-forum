@@ -23,6 +23,7 @@ describe('LoginInput component', () => {
   it('should handle email typing correctly', async () => {
     // Arrange
     render(
+      // <LoginInput login={() => {}} />,
       <Provider store={store}>
         <BrowserRouter>
           <LoginInput />
@@ -56,30 +57,30 @@ describe('LoginInput component', () => {
     expect(passwordInput).toHaveValue('passwordtest');
   });
 
-  // it('should call login function when login button is clicked', async () => {
-  //   // Arrange
-  //   const mockLogin = jest.fn();
-  //   render(
-  //     <Provider store={store}>
-  //       <BrowserRouter>
-  //         <LoginInput />
-  //       </BrowserRouter>
-  //     </Provider>,
-  //   );
+  it('should call login function when login button is clicked', async () => {
+    // Arrange
+    const mockLogin = jest.fn();
+    render(
+      <Provider store={store}>
+        <BrowserRouter>
+          <LoginInput login={mockLogin} />
+        </BrowserRouter>
+      </Provider>,
+    );
 
-  //   const emailInput = await screen.getByPlaceholderText('Email');
-  //   await userEvent.type(emailInput, 'emailtest');
-  //   const passwordInput = await screen.getByPlaceholderText('Password');
-  //   await userEvent.type(passwordInput, 'passwordtest');
-  //   const loginButton = await screen.getByRole('button', { name: 'Login' });
+    const emailInput = await screen.getByPlaceholderText('Email');
+    await userEvent.type(emailInput, 'emailtest');
+    const passwordInput = await screen.getByPlaceholderText('Password');
+    await userEvent.type(passwordInput, 'passwordtest');
+    const loginButton = await screen.getByRole('button', { name: 'Login' });
 
-  //   // Action
-  //   await userEvent.click(loginButton);
+    // Action
+    await userEvent.click(loginButton);
 
-  //   // Assert
-  //   expect(mockLogin).toBeCalledWith({
-  //     email: 'emailtest',
-  //     password: 'passwordtest',
-  //   });
-  // });
+    // Assert
+    expect(mockLogin).toBeCalledWith({
+      email: 'emailtest',
+      password: 'passwordtest',
+    });
+  });
 });
