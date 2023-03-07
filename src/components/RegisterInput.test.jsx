@@ -81,33 +81,33 @@ describe('RegisterInput component', () => {
     expect(passwordInput).toHaveValue('passwordtest');
   });
 
-  //   it('should call register function when login button is clicked', async () => {
-  //     // Arrange
-  //     const mockRegister = jest.fn();
-  //     render(
-  //       <Provider store={store}>
-  //         <BrowserRouter>
-  //           <RegisterInput />
-  //         </BrowserRouter>
-  //       </Provider>,
-  //     );
+  it('should call register function when register button is clicked', async () => {
+    // Arrange
+    const mockRegister = jest.fn();
+    render(
+      <Provider store={store}>
+        <BrowserRouter>
+          <RegisterInput register={mockRegister} />
+        </BrowserRouter>
+      </Provider>,
+    );
 
-  //     const nameInput = await screen.getByPlaceholderText('Name');
-  //     await userEvent.type(nameInput, 'nametest');
-  //     const emailInput = await screen.getByPlaceholderText('Email');
-  //     await userEvent.type(emailInput, 'emailtest');
-  //     const passwordInput = await screen.getByPlaceholderText('Password');
-  //     await userEvent.type(passwordInput, 'passwordtest');
-  //     const registerButton = await screen.getByRole('button', { name: 'Register' });
+    const nameInput = await screen.getByPlaceholderText('Name');
+    await userEvent.type(nameInput, 'nametest');
+    const emailInput = await screen.getByPlaceholderText('Email');
+    await userEvent.type(emailInput, 'emailtest');
+    const passwordInput = await screen.getByPlaceholderText('Password');
+    await userEvent.type(passwordInput, 'passwordtest');
+    const registerButton = await screen.getByRole('button', { name: 'Register' });
 
-  //     // Action
-  //     await userEvent.click(registerButton);
+    // Action
+    await userEvent.click(registerButton);
 
-//     // Assert
-//     expect(mockRegister).toBeCalledWith({
-//       name: 'nametest',
-//       email: 'emailtest',
-//       password: 'passwordtest',
-//     });
-//   });
+    // Assert
+    expect(mockRegister).toBeCalledWith({
+      name: 'nametest',
+      email: 'emailtest',
+      password: 'passwordtest',
+    });
+  });
 });

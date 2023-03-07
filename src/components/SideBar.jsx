@@ -1,5 +1,6 @@
 /* eslint-disable no-redeclare */
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { asyncAddThread } from '../states/threads/action';
 
@@ -92,5 +93,16 @@ function SideBar({ user }) {
     </div>
   );
 }
+
+const userShape = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  avatar: PropTypes.string.isRequired,
+};
+
+SideBar.propTypes = {
+  user: PropTypes.shape(userShape).isRequired,
+};
 
 export default SideBar;

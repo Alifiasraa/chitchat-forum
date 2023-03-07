@@ -37,7 +37,7 @@ function threadDetailReducer(threadDetail = null, action = {}) {
         ],
       };
     case ActionType.TOGGLE_UPVOTE_COMMENT:
-      console.log(threadDetail);
+      // console.log(threadDetail);
       return {
         ...threadDetail,
         comments: threadDetail.comments.map((comment) => {

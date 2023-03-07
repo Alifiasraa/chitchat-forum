@@ -1,5 +1,6 @@
 /* eslint-disable react/no-danger */
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   AiOutlineLike, AiOutlineDislike, AiFillLike, AiFillDislike, AiOutlineClockCircle,
 } from 'react-icons/ai';
@@ -63,5 +64,24 @@ function ThreadDetail({
     </div>
   );
 }
+
+const ownerShape = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  avatar: PropTypes.string.isRequired,
+};
+
+ThreadDetail.propTypes = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
+  createdAt: PropTypes.string.isRequired,
+  upVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
+  downVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
+  upvoteThread: PropTypes.func.isRequired,
+  downvoteThread: PropTypes.func.isRequired,
+  owner: PropTypes.shape(ownerShape).isRequired,
+};
 
 export default ThreadDetail;

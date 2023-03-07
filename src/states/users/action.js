@@ -19,6 +19,7 @@ function asyncRegisterUser({ name, email, password }) {
     dispatch(showLoading());
     try {
       await api.register({ name, email, password });
+      alert('user created');
     } catch (error) {
       alert(error.message);
     }
