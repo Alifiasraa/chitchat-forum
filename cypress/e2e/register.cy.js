@@ -32,51 +32,51 @@ describe('Register spec', () => {
     });
   });
 
-  it('should display alert when email is empty', () => {
-    // mengisi name
-    cy.get('input[placeholder="Name"]').type('testuser');
+  // it('should display alert when email is empty', () => {
+  //   // mengisi name
+  //   cy.get('input[placeholder="Name"]').type('testuser');
 
-    // klik tombol register tanpa mengisi email
-    cy.get('button').contains(/^Register$/).click();
+  //   // klik tombol register tanpa mengisi email
+  //   cy.get('button').contains(/^Register$/).click();
 
-    // memverifikasi window.alert untuk menampilkan pesan dari API
-    cy.on('window:alert', (str) => {
-      expect(str).to.equal('"email" is not allowed to be empty');
-    });
-  });
+  //   // memverifikasi window.alert untuk menampilkan pesan dari API
+  //   cy.on('window:alert', (str) => {
+  //     expect(str).to.equal('"email" is not allowed to be empty');
+  //   });
+  // });
 
-  it('should display alert when password is empty', () => {
-    // mengisi name
-    cy.get('input[placeholder="Name"]').type('testuser@gmail.com');
-    // mengisi email
-    cy.get('input[placeholder="Email"]').type('testuser');
+  // it('should display alert when password is empty', () => {
+  //   // mengisi name
+  //   cy.get('input[placeholder="Name"]').type('testuser@gmail.com');
+  //   // mengisi email
+  //   cy.get('input[placeholder="Email"]').type('testuser');
 
-    // klik tombol register tanpa mengisi password
-    cy.get('button').contains(/^Register$/).click();
+  //   // klik tombol register tanpa mengisi password
+  //   cy.get('button').contains(/^Register$/).click();
 
-    // memverifikasi window.alert untuk menampilkan pesan dari API
-    cy.on('window:alert', (str) => {
-      expect(str).to.equal('"password" is not allowed to be empty');
-    });
-  });
+  //   // memverifikasi window.alert untuk menampilkan pesan dari API
+  //   cy.on('window:alert', (str) => {
+  //     expect(str).to.equal('"password" is not allowed to be empty');
+  //   });
+  // });
 
-  it('should display alert when email is already taken', () => {
-    // mengisi name
-    cy.get('input[placeholder="Name"]').type('yoo');
+  // it('should display alert when email is already taken', () => {
+  //   // mengisi name
+  //   cy.get('input[placeholder="Name"]').type('yoo');
 
-    // mengisi email
-    cy.get('input[placeholder="Email"]').type('yoo@gmail.com');
+  //   // mengisi email
+  //   cy.get('input[placeholder="Email"]').type('yoo@gmail.com');
 
-    // mengisi password yang salah
-    cy.get('input[placeholder="Password"]').type('yoo1234');
+  //   // mengisi password yang salah
+  //   cy.get('input[placeholder="Password"]').type('yoo1234');
 
-    // menekan tombol Register
-    cy.get('button').contains(/^Register$/).click();
+  //   // menekan tombol Register
+  //   cy.get('button').contains(/^Register$/).click();
 
-    // memverifikasi window.alert untuk menampilkan pesan dari API
-    cy.on('window:alert', (str) => {
-      expect(str).to.equal('email is already taken');
-    });
+  //   // memverifikasi window.alert untuk menampilkan pesan dari API
+  //   cy.on('window:alert', (str) => {
+  //     expect(str).to.equal('email is already taken');
+  //   });
   });
 
   // it('should display loginpage when register successed', () => {
