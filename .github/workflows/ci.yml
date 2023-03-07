@@ -4,7 +4,7 @@ on:
   pull_request:
     branches:
       - master
-      - ci-cd-test
+      # - ci-cd-test
 
 jobs:
   automation-test-job:
@@ -15,7 +15,7 @@ jobs:
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
-          node-version: 16.x
+          node-version: ${{ matrix.node-version }}
       - name: npm install and test
         run: |
           npm install
