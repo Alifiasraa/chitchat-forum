@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import ThreadCard from '../components/ThreadCard';
+import '../index.css';
 
 const stories = {
   title: 'ThreadCard',
