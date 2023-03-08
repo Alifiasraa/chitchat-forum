@@ -5,7 +5,7 @@
  *   - should display alert when email is empty
  *   - should display alert when password is empty
  *   - should display alert when email is already taken
- *   - should display alert when email and password are correct
+ *   - should display alert when register successful
  */
 
 describe('Register spec', () => {
@@ -79,7 +79,7 @@ describe('Register spec', () => {
     });
   });
 
-  it('should display alert when register successed', () => {
+  it('should display alert when register successful', () => {
     // mengisi name
     cy.get('input[placeholder="Name"]').type('testuser');
 
