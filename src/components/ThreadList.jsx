@@ -6,31 +6,31 @@ import ThreadCard from './ThreadCard';
 function ThreadList({ threads, upvote, downvote }) {
   return (
     <div>
-      {
-        threads.map((thread) => (
-          <ThreadCard
-            {...thread}
-            key={thread.id}
-            upvote={upvote}
-            downvote={downvote}
-          />
-        ))
-       }
+      {threads.map((thread) => (
+        <ThreadCard
+          {...thread}
+          key={thread.id}
+          upvote={upvote}
+          downvote={downvote}
+        />
+      ))}
     </div>
   );
 }
 
 ThreadList.propTypes = {
-  threads: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    body: PropTypes.string.isRequired,
-    category: PropTypes.string.isRequired,
-    createdAt: PropTypes.string.isRequired,
-    upVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
-    downVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
-    totalComments: PropTypes.number.isRequired,
-  }).isRequired,
+  threads: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      body: PropTypes.string.isRequired,
+      category: PropTypes.string.isRequired,
+      createdAt: PropTypes.string.isRequired,
+      upVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
+      downVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
+      totalComments: PropTypes.number.isRequired,
+    }),
+  ).isRequired,
   upvote: PropTypes.func.isRequired,
   downvote: PropTypes.func.isRequired,
 };
