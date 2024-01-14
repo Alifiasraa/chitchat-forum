@@ -1,11 +1,20 @@
+/* eslint-disable quotes */
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react';
-import PropTypes from 'prop-types';
-import ThreadCard from './ThreadCard';
+import React from "react";
+import PropTypes from "prop-types";
+import ThreadCard from "./ThreadCard";
 
 function ThreadList({ threads, upvote, downvote }) {
   return (
     <div>
+      {threads.map((thread) => (
+        <ThreadCard
+          {...thread}
+          key={thread.id}
+          upvote={upvote}
+          downvote={downvote}
+        />
+      ))}
       {threads.map((thread) => (
         <ThreadCard
           {...thread}
